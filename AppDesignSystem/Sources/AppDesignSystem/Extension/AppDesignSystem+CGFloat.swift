@@ -1,0 +1,59 @@
+//
+//  AppDesignSystem+CGFloat.swift
+//  AppDesignSystem
+//
+//  Created by Tako Metonidze on 3/21/25.
+//
+
+import CoreGraphics.CGBase
+
+public extension CGFloat {
+  /// 24pt corner radius
+  static let cornerRadius1: CGFloat = 24
+
+  /// 14pt corner radius
+  static let cornerRadius2: CGFloat = 14
+
+  /// 12pt corner radius
+  static let cornerRadius3: CGFloat = 12
+
+  /// 16pt corner radius
+  static let cornerRadius4: CGFloat = 16
+
+  /// 64pt spacing
+  static let spacing1: CGFloat = 64
+
+  /// 56pt spacing
+  static let spacing2: CGFloat = 56
+
+  /// 48pt spacing
+  static let spacing3: CGFloat = 48
+
+  /// 40pt spacing
+  static let spacing4: CGFloat = 40
+
+  /// 32pt spacing
+  static let spacing5: CGFloat = 32
+
+  /// 24pt spacing
+  static let spacing6: CGFloat = 24
+
+  /// 16pt spacing
+  static let spacing7: CGFloat = 16
+
+  /// 8pt spacing
+  static let spacing8: CGFloat = 8
+
+  /// 4pt spacing
+  static let spacing9: CGFloat = 4
+
+  /// Add width scale factor to self
+  var scaledWidth: CGFloat {
+    return (self * Constants.Screen.factor).rounded(.toNearestOrAwayFromZero)
+  }
+
+  /// Add height scale factor to self
+  var scaledHeight: CGFloat {
+    return self * Constants.Screen.heightFactor
+  }
+}
