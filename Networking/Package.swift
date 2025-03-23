@@ -12,11 +12,19 @@ let package = Package(
       name: "Networking",
       targets: ["Networking"])
   ],
+  dependencies: [
+    // Dependencies declare other packages that this package depends on.
+    // .package(url: /* package url */, from: "1.0.0"),
+    .package(url: "https://github.com/Moya/Moya.git", .upToNextMajor(from: "15.0.0"))
+  ],
   targets: [
     // Targets are the basic building blocks of a package, defining a module or a test suite.
     // Targets can depend on other targets in this package and products from dependencies.
     .target(
-      name: "Networking"),
+      name: "Networking",
+      dependencies: [
+        "Moya"
+      ]),
     .testTarget(
       name: "NetworkingTests",
       dependencies: ["Networking"]
