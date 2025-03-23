@@ -19,6 +19,7 @@
 		038048CF2D8D5C00008292ED /* AssessmentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssessmentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03804A6E2D8D904C008292ED /* AppDesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppDesignSystem; sourceTree = "<group>"; };
 		03804A6F2D8D9E23008292ED /* Presentation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Presentation; sourceTree = "<group>"; };
+		03804ACC2D8DAF8D008292ED /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -62,6 +63,7 @@
 		038048C62D8D5C00008292ED = {
 			isa = PBXGroup;
 			children = (
+				03804ACC2D8DAF8D008292ED /* Networking */,
 				03804A6F2D8D9E23008292ED /* Presentation */,
 				03804A6E2D8D904C008292ED /* AppDesignSystem */,
 				038048D12D8D5C00008292ED /* AssessmentApp */,
@@ -231,6 +233,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -264,6 +267,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = minimal;
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
