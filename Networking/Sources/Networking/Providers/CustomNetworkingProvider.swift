@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CustomNetworkingProvider.swift
 //  Networking
 //
 //  Created by Tako Metonidze on 3/21/25.
@@ -34,8 +34,7 @@ final class CustomNetworkingProvider<Target>: Sendable where Target: Moya.Target
       plugins: [
         NetworkLoggerPlugin(
           configuration: NetworkLoggerPlugin.Configuration(logOptions: .verbose)
-        ),
-        CustomMoyaBackgroundPlugin()
+        )
       ],
       trackInflights: trackInflights
     )
@@ -103,3 +102,5 @@ final class CustomNetworkingProvider<Target>: Sendable where Target: Moya.Target
     return provider.request(target, callbackQueue: callbackQueue, progress: progress, completion: completion)
   }
 }
+
+extension Moya.Response: @unchecked Sendable { }

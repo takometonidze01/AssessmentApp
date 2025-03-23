@@ -24,7 +24,11 @@ let package = Package(
       name: "Networking",
       dependencies: [
         "Moya"
-      ]),
+      ],
+      swiftSettings: [
+        .unsafeFlags(["-Xfrontend", "-strict-concurrency=minimal"])
+      ]
+    ),
     .testTarget(
       name: "NetworkingTests",
       dependencies: ["Networking"]

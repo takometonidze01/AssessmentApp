@@ -13,12 +13,10 @@ public final class CustomRestApi: Sendable {
   private let provider: CustomNetworkingProvider<CustomMultiTarget>
 
   public init(
-    baseURL url: URL,
-    accessTokenSource: AccessTokenSource,
-    unAuthorizedRequestHandler: UnAuthorizedHandlerType
+    baseURL url: URL
   ) {
     baseURL = url
-    provider = CustomNetworkingProvider<CustomMultiTarget>(accessTokenSource: accessTokenSource, unAuthorizedRequestHandler: unAuthorizedRequestHandler)
+    provider = CustomNetworkingProvider<CustomMultiTarget>()
   }
 
   public func request<ResponseType: Decodable>(_ target: CustomTargetType) async throws -> ResponseType {

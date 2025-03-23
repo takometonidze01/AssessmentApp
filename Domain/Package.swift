@@ -25,7 +25,9 @@ let package = Package(
       dependencies: [
         "Networking"
       ],
-      swiftSettings: [SwiftSetting.unsafeFlags(["-Xfrontend", "-strict-concurrency=complete"])]
+      swiftSettings: [
+        .unsafeFlags(["-Xfrontend", "-strict-concurrency=targeted"])
+      ]
     ),
     .testTarget(
       name: "DomainTests",

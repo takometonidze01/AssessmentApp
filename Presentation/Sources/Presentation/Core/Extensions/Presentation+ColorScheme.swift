@@ -6,6 +6,7 @@
 //
 
 import SwiftUICore
+import Domain
 
 extension ColorScheme {
   var isDarkMode: Bool {

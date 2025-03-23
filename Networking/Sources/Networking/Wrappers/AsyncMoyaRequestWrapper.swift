@@ -5,9 +5,9 @@
 //  Created by Tako Metonidze on 3/21/25.
 //
 
-import Moya
+@preconcurrency import Moya
 
-class AsyncMoyaRequestWrapper {
+final class AsyncMoyaRequestWrapper: @unchecked Sendable {
   internal typealias MoyaContinuation = CheckedContinuation<Result<Response, MoyaError>, Never>
 
   var performRequest: (MoyaContinuation) -> Moya.Cancellable?
