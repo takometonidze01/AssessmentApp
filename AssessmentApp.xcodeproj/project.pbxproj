@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		035609B52D901C8200DE2D18 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 035609B42D901C8200DE2D18 /* SnapKit */; };
 		03804A852D8DA59B008292ED /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 03804A842D8DA59B008292ED /* Toast */; };
 		03804A9A2D8DA6F9008292ED /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03804A992D8DA6F9008292ED /* SwiftEntryKit */; };
 		03804AB22D8DAD65008292ED /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 03804AB12D8DAD65008292ED /* RxBlocking */; };
@@ -52,6 +53,7 @@
 				03804AB82D8DAD65008292ED /* RxSwift in Frameworks */,
 				03804AB62D8DAD65008292ED /* RxRelay in Frameworks */,
 				03804A9A2D8DA6F9008292ED /* SwiftEntryKit in Frameworks */,
+				035609B52D901C8200DE2D18 /* SnapKit in Frameworks */,
 				03804AB22D8DAD65008292ED /* RxBlocking in Frameworks */,
 				03804AB42D8DAD65008292ED /* RxCocoa in Frameworks */,
 				03804A852D8DA59B008292ED /* Toast in Frameworks */,
@@ -116,6 +118,7 @@
 				03804AB32D8DAD65008292ED /* RxCocoa */,
 				03804AB52D8DAD65008292ED /* RxRelay */,
 				03804AB72D8DAD65008292ED /* RxSwift */,
+				035609B42D901C8200DE2D18 /* SnapKit */,
 			);
 			productName = AssessmentApp;
 			productReference = 038048CF2D8D5C00008292ED /* AssessmentApp.app */;
@@ -153,6 +156,7 @@
 				03804A9D2D8DABC5008292ED /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				03804AB02D8DAD65008292ED /* XCRemoteSwiftPackageReference "RxSwift" */,
 				03804AB92D8DAE16008292ED /* XCRemoteSwiftPackageReference "Factory" */,
+				035609A12D901BF200DE2D18 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 038048D02D8D5C00008292ED /* Products */;
@@ -418,6 +422,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		035609A12D901BF200DE2D18 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 		03804A702D8DA55A008292ED /* XCRemoteSwiftPackageReference "toast-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BastiaanJansen/toast-swift.git";
@@ -477,6 +489,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		035609B42D901C8200DE2D18 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 035609A12D901BF200DE2D18 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		03804A842D8DA59B008292ED /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 03804A702D8DA55A008292ED /* XCRemoteSwiftPackageReference "toast-swift" */;
