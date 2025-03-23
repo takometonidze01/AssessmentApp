@@ -20,6 +20,7 @@
 		03804A6E2D8D904C008292ED /* AppDesignSystem */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppDesignSystem; sourceTree = "<group>"; };
 		03804A6F2D8D9E23008292ED /* Presentation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Presentation; sourceTree = "<group>"; };
 		03804ACC2D8DAF8D008292ED /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Networking; sourceTree = "<group>"; };
+		03804AF12D9003CF008292ED /* Domain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Domain; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -63,6 +64,7 @@
 		038048C62D8D5C00008292ED = {
 			isa = PBXGroup;
 			children = (
+				03804AF12D9003CF008292ED /* Domain */,
 				03804ACC2D8DAF8D008292ED /* Networking */,
 				03804A6F2D8D9E23008292ED /* Presentation */,
 				03804A6E2D8D904C008292ED /* AppDesignSystem */,
