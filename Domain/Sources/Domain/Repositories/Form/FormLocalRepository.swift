@@ -16,7 +16,7 @@ public final class FormLocalRepository: FormRepositoring {
     self.remoteRepo = .init(service: service)
   }
 
-  public func fetchFormData() async throws -> PageItem {
+  public func fetchFormData(resetCache: Bool) async throws -> PageItem {
     var cachedData: LocalCacheData<PageItem>?
     do {
       cachedData = try await readCacheData()
@@ -24,11 +24,11 @@ public final class FormLocalRepository: FormRepositoring {
       print("Error reading cache data:", error.localizedDescription)
     }
 
-    if let cachedData = cachedData, !cachedData.cachedItem.items.isEmpty, !cachedData.isExpired {
+    if let cachedData = cachedData, !cachedData.cachedItem.items.isEmpty, !cachedData.isExpired, !resetCache {
       return cachedData.cachedItem
     } else {
       do {
-        let remoteData = try await remoteRepo.fetchFormData()
+        let remoteData = try await remoteRepo.fetchFormData(resetCache: resetCache)
         let localData = LocalCacheData<PageItem>(data: remoteData, expiresAt: Date.now + 60.0 * 60.0)
         await saveDataToCache(localData)
         return remoteData

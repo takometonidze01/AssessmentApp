@@ -13,6 +13,7 @@ import Presentation
 extension MainView {
   enum ViewActions {
     case idle
+    case endRefreshing
   }
 }
 
@@ -21,6 +22,7 @@ extension MainView {
 protocol MainViewModelInputs {
   func viewDidLoad()
   func setCollectionView(collectionView: CustomCollectionView)
+  func refreshItem()
 }
 
 /// Protocol for MainViewModelTypeViewModel getters

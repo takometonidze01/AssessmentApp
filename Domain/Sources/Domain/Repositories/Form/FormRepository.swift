@@ -11,7 +11,7 @@ import UIKit
 public protocol FormRepositoring: Sendable {
   /// fetch form data
   /// - Returns: PageItem
-  func fetchFormData() async throws -> PageItem
+  func fetchFormData(resetCache: Bool) async throws -> PageItem
 }
 
 public final class FormRepository: FormRepositoring {
@@ -21,7 +21,7 @@ public final class FormRepository: FormRepositoring {
     self.service = service
   }
 
-  public func fetchFormData() async throws -> PageItem {
+  public func fetchFormData(resetCache: Bool) async throws -> PageItem {
     let target = FormService.getFormData
     let data: PageItem = try await service.request(target)
 

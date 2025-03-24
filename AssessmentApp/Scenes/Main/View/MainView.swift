@@ -14,6 +14,17 @@ class MainView: UIView {
 
   var viewModel: MainViewModelType
 
+  private lazy var refreshControl: UIRefreshControl = {
+    let view = UIRefreshControl()
+    view.addAction(UIAction { [weak self] _ in
+      guard let self else {
+        return
+      }
+      self.viewModel.inputs.refreshItem()
+    }, for: .valueChanged)
+    return view
+  }()
+
   private lazy var collectionView: CustomCollectionView = {
     let layout = UICollectionViewCompositionalLayout { [weak self] _, _ -> NSCollectionLayoutSection? in
       guard let self else {
@@ -28,6 +39,7 @@ class MainView: UIView {
     layout.configuration = config
     let view = CustomCollectionView(collectionViewLayout: layout)
     view.contentInset = .init(top: CGFloat.spacing6, left: 0, bottom: 0, right: 0)
+    view.refreshControl = refreshControl
 
     return view
   }()
@@ -38,6 +50,8 @@ class MainView: UIView {
     self.viewModel = viewModel
     super.init(frame: .zero)
     setup()
+
+    collectionView.refreshControl = refreshControl
   }
 
   @available(*, unavailable)
@@ -51,6 +65,8 @@ class MainView: UIView {
     switch action {
     case .idle:
       break
+    case .endRefreshing:
+      endRefresh()
     }
   }
 
@@ -98,5 +114,11 @@ class MainView: UIView {
       })
       .disposed(by: disposeBag)
     viewModel.inputs.setCollectionView(collectionView: collectionView)
+  }
+
+  private func endRefresh() {
+    if refreshControl.isRefreshing {
+      refreshControl.endRefreshing()
+    }
   }
 }

@@ -37,12 +37,17 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
   }
 
   func viewDidLoad() {
-    fetchFormData()
+    fetchFormData(needsReload: false)
     observeNetworkStatus()
   }
 
   func setCollectionView(collectionView: CustomCollectionView) {
     dataSource = makeDataSource(for: collectionView)
+  }
+
+  func refreshItem() {
+    formData = nil
+    fetchFormData(needsReload: true)
   }
 
   private func makeDataSource(for collectionView: CustomCollectionView) -> CollectionViewDataSource? {
@@ -59,11 +64,13 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
     return dataSource
   }
 
-  private func fetchFormData() {
+  private func fetchFormData(needsReload: Bool) {
+    self.actionsSubject.onNext(.endRefreshing)
+
     Task { [weak self] in
       guard let self else { return }
       do {
-        let formData = try await serviceLocator.formRepository.fetchFormData()
+        let formData = try await serviceLocator.formRepository.fetchFormData(resetCache: needsReload)
         self.formData = formData
 
         self.updateDataSource()
