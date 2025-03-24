@@ -45,7 +45,9 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
       .page: getTextCell(for: .page),
       .sectionTitle: getTextCell(for: .sectionTitle),
       .subtitle: getTextCell(for: .subtitle),
-      .imageItem: getImageCell()
+      .imageItem: getImageCell(),
+      .empty: getEmptyCell(type: .empty),
+      .error: getEmptyCell(type: .error)
     ]
 
     dataSource = CollectionViewDataSource(collectionView: collectionView, cellRegisrations: cellRegistrations)
@@ -62,6 +64,7 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
 
         self.updateDataSource()
       } catch {
+        updateEmptyState(with: .error)
         print("❌ API Error: \(error.localizedDescription)")
       }
     }
@@ -71,6 +74,13 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
     CollectionViewDataSource.CellRegistration { cell, _, identifier in
       let font: UIFont = type.associatedFont
       let configuration = TextContentConfiguration(title: identifier.id, font: font)
+      cell.contentConfiguration = configuration
+    }
+  }
+
+  private func getEmptyCell(type: EmptyStateType) -> CollectionViewDataSource.CellRegistration {
+    CollectionViewDataSource.CellRegistration { cell, _, _ in
+      let configuration = EmptyStateContentConfiguration(type: type)
       cell.contentConfiguration = configuration
     }
   }
@@ -91,7 +101,11 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
 
   @MainActor
   private func updateDataSource() {
-    guard let rootPage = self.formData else { return }
+    self.formData = nil
+    guard let rootPage = self.formData else {
+      updateEmptyState(with: .empty)
+      return
+    }
 
     var snapshot = SnapshotType()
 
@@ -106,6 +120,18 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
     snapshot.appendItems([mainTitleItem], toSection: mainSection)
 
     processItems(formData?.items ?? [], into: &snapshot, parentSection: mainSection)
+
+    dataSource?.apply(snapshot, animatingDifferences: false)
+  }
+  
+  @MainActor
+  private func updateEmptyState(with type: EmptyStateType) {
+    var snapshot = SnapshotType()
+    let emptySection = ListSectionIdentifierType(id: "empty-section", title: "")
+    let emptyItem = ListItemIdentifierType(id: UUID().uuidString, sectionIdentifier: emptySection.id, type: type == .error ? .error : .empty)
+
+    snapshot.appendSections([emptySection])
+    snapshot.appendItems([emptyItem], toSection: emptySection)
 
     dataSource?.apply(snapshot, animatingDifferences: false)
   }

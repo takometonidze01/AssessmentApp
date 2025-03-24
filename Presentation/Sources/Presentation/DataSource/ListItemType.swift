@@ -12,4 +12,6 @@ public enum ListItemType: String, Hashable, CaseIterable, Sendable {
   case sectionTitle
   case subtitle
   case imageItem
+  case empty
+  case error
 }
