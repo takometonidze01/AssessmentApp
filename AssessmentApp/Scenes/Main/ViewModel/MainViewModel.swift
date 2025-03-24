@@ -27,7 +27,11 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
 
   private var formData: PageItem?
 
-  init() {
+  var serviceLocator: MainServiceLocator
+
+  init(serviceLocator: MainServiceLocator) {
+    self.serviceLocator = serviceLocator
+
     actions = actionsSubject
       .asDriver(onErrorJustReturn: .idle)
   }
@@ -58,8 +62,7 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
     Task { [weak self] in
       guard let self else { return }
       do {
-        let repository = FormRepository(service: CustomRestApi(baseURL: URL(string: "https://run.mocky.io")!))
-        let formData = try await repository.fetchFormData()
+        let formData = try await serviceLocator.formRepository.fetchFormData()
         self.formData = formData
 
         self.updateDataSource()
@@ -101,7 +104,6 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
 
   @MainActor
   private func updateDataSource() {
-    self.formData = nil
     guard let rootPage = self.formData else {
       updateEmptyState(with: .empty)
       return

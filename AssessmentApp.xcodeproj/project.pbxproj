@@ -12,6 +12,8 @@
 		03560A5B2D90248600DE2D18 /* AppDesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 03560A5A2D90248600DE2D18 /* AppDesignSystem */; };
 		03560A5D2D90248C00DE2D18 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 03560A5C2D90248C00DE2D18 /* Networking */; };
 		03560A5F2D90249000DE2D18 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 03560A5E2D90249000DE2D18 /* Presentation */; };
+		035800E32D91AAE300969C23 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 035800E22D91AAE300969C23 /* Factory */; };
+		035801092D91AC4A00969C23 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 035801082D91AC4A00969C23 /* XCoordinator */; };
 		03804A852D8DA59B008292ED /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 03804A842D8DA59B008292ED /* Toast */; };
 		03804A9A2D8DA6F9008292ED /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 03804A992D8DA6F9008292ED /* SwiftEntryKit */; };
 		03804AB22D8DAD65008292ED /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 03804AB12D8DAD65008292ED /* RxBlocking */; };
@@ -57,6 +59,7 @@
 				03804AB82D8DAD65008292ED /* RxSwift in Frameworks */,
 				03804AB62D8DAD65008292ED /* RxRelay in Frameworks */,
 				03804A9A2D8DA6F9008292ED /* SwiftEntryKit in Frameworks */,
+				035800E32D91AAE300969C23 /* Factory in Frameworks */,
 				035609B52D901C8200DE2D18 /* SnapKit in Frameworks */,
 				03804AB22D8DAD65008292ED /* RxBlocking in Frameworks */,
 				03560A5B2D90248600DE2D18 /* AppDesignSystem in Frameworks */,
@@ -65,6 +68,7 @@
 				03560A592D90248300DE2D18 /* Domain in Frameworks */,
 				03560A5D2D90248C00DE2D18 /* Networking in Frameworks */,
 				03804A852D8DA59B008292ED /* Toast in Frameworks */,
+				035801092D91AC4A00969C23 /* XCoordinator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +135,8 @@
 				03560A5A2D90248600DE2D18 /* AppDesignSystem */,
 				03560A5C2D90248C00DE2D18 /* Networking */,
 				03560A5E2D90249000DE2D18 /* Presentation */,
+				035800E22D91AAE300969C23 /* Factory */,
+				035801082D91AC4A00969C23 /* XCoordinator */,
 			);
 			productName = AssessmentApp;
 			productReference = 038048CF2D8D5C00008292ED /* AssessmentApp.app */;
@@ -169,6 +175,7 @@
 				03804AB02D8DAD65008292ED /* XCRemoteSwiftPackageReference "RxSwift" */,
 				03804AB92D8DAE16008292ED /* XCRemoteSwiftPackageReference "Factory" */,
 				035609A12D901BF200DE2D18 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				035800E42D91AC2900969C23 /* XCRemoteSwiftPackageReference "XCoordinator" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 038048D02D8D5C00008292ED /* Products */;
@@ -444,6 +451,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		035800E42D91AC2900969C23 /* XCRemoteSwiftPackageReference "XCoordinator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/QuickBirdEng/XCoordinator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.1;
+			};
+		};
 		03804A702D8DA55A008292ED /* XCRemoteSwiftPackageReference "toast-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BastiaanJansen/toast-swift.git";
@@ -523,6 +538,16 @@
 		03560A5E2D90249000DE2D18 /* Presentation */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Presentation;
+		};
+		035800E22D91AAE300969C23 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 03804AB92D8DAE16008292ED /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+		035801082D91AC4A00969C23 /* XCoordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 035800E42D91AC2900969C23 /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinator;
 		};
 		03804A842D8DA59B008292ED /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
