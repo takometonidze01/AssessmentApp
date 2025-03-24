@@ -12,17 +12,15 @@ public enum FormItem: Decodable, Sendable {
   case section(SectionItem)
   case text(TextQuestion)
   case image(ImageQuestion)
-  
+
   public enum CodingKeys: String, CodingKey {
     case type
   }
-  
+
   public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     let type = try container.decode(FormItemType.self, forKey: .type)
-    
-    let singleValue = try decoder.singleValueContainer()
-    
+
     switch type {
     case .page:
       self = .page(try PageItem(from: decoder))

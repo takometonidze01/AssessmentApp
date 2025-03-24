@@ -8,8 +8,8 @@
 import Foundation
 
 public enum FormItemType: String, Decodable, Sendable {
-    case page
-    case section
-    case text
-    case image
+  case page
+  case section
+  case text
+  case image
 }

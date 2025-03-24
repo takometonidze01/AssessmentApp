@@ -73,7 +73,7 @@ class MainView: UIView {
   private func titleSection() -> NSCollectionLayoutSection {
     let itemSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(1.0),
-      heightDimension: .absolute(25.0)
+      heightDimension: .absolute(150)
     )
 
     let item = NSCollectionLayoutItem(layoutSize: itemSize)

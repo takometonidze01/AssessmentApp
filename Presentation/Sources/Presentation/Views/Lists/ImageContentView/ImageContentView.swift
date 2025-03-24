@@ -21,7 +21,7 @@ class ImageContentView: UIView, UIContentView {
     view.backgroundColor = .clear
     return view
   }()
-  
+
   private lazy var imageView: CustomImageView = {
     let imageView = CustomImageView(frame: .zero)
     imageView.contentMode = .scaleAspectFit
