@@ -34,3 +34,12 @@ extension MainFlowContainer {
     .shared
   }
 }
+
+extension MainFlowContainer {
+  @MainActor var toast: Factory<CustomToast> {
+    self { @MainActor in
+      CustomToast()
+    }
+    .singleton
+  }
+}

@@ -38,6 +38,7 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
 
   func viewDidLoad() {
     fetchFormData()
+    observeNetworkStatus()
   }
 
   func setCollectionView(collectionView: CustomCollectionView) {
@@ -221,6 +222,16 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
     }
 
     return result
+  }
+
+  private func observeNetworkStatus() {
+    NetworkMonitor.shared.onStatusChange = { [weak self] isConnected in
+      guard !isConnected else { return }
+
+      self?.serviceLocator.toast.showCustomView(
+        with: .init(title: "No internet connection", type: .error)
+      )
+    }
   }
 }
 
