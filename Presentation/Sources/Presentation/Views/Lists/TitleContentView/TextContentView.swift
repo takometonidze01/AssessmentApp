@@ -9,7 +9,7 @@ import UIKit
 import AppDesignSystem
 import SnapKit
 
-class TitleSectionContentView: UIView, UIContentView {
+class TextContentView: UIView, UIContentView {
   var configuration: UIContentConfiguration {
     didSet {
       configure(configuration: configuration)
@@ -24,13 +24,11 @@ class TitleSectionContentView: UIView, UIContentView {
 
   private lazy var titleLabel: UILabel = {
     let label = UILabel()
-//    label.font = .h1
-    label.font = .systemFont(ofSize: 20, weight: .bold)
     label.textColor = UIColor[.text1]
     return label
   }()
 
-  init(withConfiguration conf: TitleSectionContentConfiguration) {
+  init(withConfiguration conf: TextContentConfiguration) {
     configuration = conf
     super.init(frame: .zero)
     setup()
@@ -50,11 +48,12 @@ class TitleSectionContentView: UIView, UIContentView {
   }
 
   private func configure(configuration: UIContentConfiguration) {
-    guard let config = configuration as? TitleSectionContentConfiguration else {
+    guard let config = configuration as? TextContentConfiguration else {
       return
     }
 
     titleLabel.text = config.title
+    titleLabel.font = config.font
   }
 
   private func layout() {

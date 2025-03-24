@@ -8,5 +8,8 @@
 import Foundation
 
 public enum ListItemType: String, Hashable, CaseIterable, Sendable {
-  case titleSection
+  case page
+  case sectionTitle
+  case subtitle
+  case imageItem
 }

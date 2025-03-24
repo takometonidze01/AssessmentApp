@@ -48,7 +48,9 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
 
   private func makeDataSource(for collectionView: CustomCollectionView) -> CollectionViewDataSource? {
     let cellRegistrations: CollectionViewDataSource.CellRegistrations = [
-      .titleSection: getTitleCell()
+      .page: getTextCell(for: .page),
+      .sectionTitle: getTextCell(for: .sectionTitle),
+      .subtitle: getTextCell(for: .subtitle)
     ]
 
     dataSource = CollectionViewDataSource(collectionView: collectionView, cellRegisrations: cellRegistrations)
@@ -63,9 +65,10 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
     return dataSource
   }
 
-  private func getTitleCell() -> CollectionViewDataSource.CellRegistration {
+  private func getTextCell(for type: ListItemType) -> CollectionViewDataSource.CellRegistration {
     CollectionViewDataSource.CellRegistration { cell, _, _ in
-      let configuration = TitleSectionContentConfiguration(title: "Introduction")
+      let font: UIFont = type.associatedFont
+      let configuration = TextContentConfiguration(title: "Introduction", font: font)
       cell.contentConfiguration = configuration
     }
   }
@@ -75,11 +78,27 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
     var snapshot = SnapshotType()
 
     let section = ListSectionIdentifierType(id: "section1", title: "")
-    let item = ListItemIdentifierType(id: "item1", sectionIdentifier: section.id, type: .titleSection)
+    let item = ListItemIdentifierType(id: "item1", sectionIdentifier: section.id, type: .page)
 
     snapshot.appendSections([section])
     snapshot.appendItems([item], toSection: section)
 
     dataSource?.apply(snapshot, animatingDifferences: false)
+  }
+}
+
+private extension ListItemType {
+  var associatedFont: UIFont {
+    switch self {
+    case .page:
+      return .h1
+    case .sectionTitle:
+      return .body1
+    case .subtitle:
+      return .body2
+      // Handle any additional or new cases gracefully:
+    default:
+      return .systemFont(ofSize: 17, weight: .regular)
+    }
   }
 }

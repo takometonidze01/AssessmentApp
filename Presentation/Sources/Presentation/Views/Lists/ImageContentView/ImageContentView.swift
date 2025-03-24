@@ -30,8 +30,7 @@ class ImageContentView: UIView, UIContentView {
 
   private lazy var titleLabel: UILabel = {
     let label = UILabel()
-//    label.font = .h1
-    label.font = .systemFont(ofSize: 20, weight: .bold)
+    label.font = .body2
     label.textColor = UIColor[.text1]
     return label
   }()
@@ -77,11 +76,11 @@ class ImageContentView: UIView, UIContentView {
 
     imageView.snp.remakeConstraints { make in
       make.top.leading.equalToSuperview()
-      make.size.equalTo(160)
+      make.size.equalTo(160.0.scaledWidth)
     }
 
     titleLabel.snp.remakeConstraints { make in
-      make.top.equalTo(imageView.snp.bottom).offset(CGFloat.spacing8)
+      make.top.equalTo(imageView.snp.bottom).offset(CGFloat.spacing8.scaledWidth)
       make.leading.equalToSuperview()
     }
   }
