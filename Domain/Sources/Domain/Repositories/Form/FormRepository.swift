@@ -23,6 +23,15 @@ public final class FormRepository: FormRepositoring {
 
   public func fetchFormData() async throws -> PageItem {
     let target = FormService.getFormData
+    let data: PageItem = try await service.request(target)
+
+    let localData = LocalCacheData<PageItem>(data: data, expiresAt: Date.now + 60.0 * 60.0)
+    await storeLocally(data: localData)
     return try await service.request(target)
+  }
+
+  private func storeLocally(data: LocalCacheData<PageItem>) async {
+    let dataManager = ServicesCacheDataManager()
+    await dataManager.saveDataToCache(data)
   }
 }

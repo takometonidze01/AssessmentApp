@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct TextQuestion: Decodable, Sendable {
+public struct TextQuestion: Codable, Sendable {
   public let type: FormItemType
   public let title: String
 }

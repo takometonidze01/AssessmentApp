@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct ImageQuestion: Decodable, Sendable {
+public struct ImageQuestion: Codable, Sendable {
   public let type: FormItemType
   public let src: String
   public let title: String

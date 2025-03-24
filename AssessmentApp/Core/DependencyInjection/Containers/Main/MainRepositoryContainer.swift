@@ -22,7 +22,7 @@ extension MainFlowContainer {
 
   var mainRepository: Factory<FormRepositoring> {
     self {
-      FormRepository(service: MainFlowContainer.shared.tnetRestApi())
+      FormLocalRepository(service: MainFlowContainer.shared.tnetRestApi())
     }
     .shared
   }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum FormItemType: String, Decodable, Sendable {
+public enum FormItemType: String, Codable, Sendable {
   case page
   case section
   case text

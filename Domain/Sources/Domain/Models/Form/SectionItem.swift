@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SectionItem: Decodable, Sendable {
+public struct SectionItem: Codable, Sendable {
   public let type: FormItemType
   public let title: String
   public let items: [FormItem]
