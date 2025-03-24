@@ -59,6 +59,7 @@ class TextContentView: UIView, UIContentView {
   private func layout() {
     wrapperView.snp.remakeConstraints { make in
       make.edges.equalToSuperview()
+      make.height.equalTo(30.0.scaledWidth)
     }
 
     titleLabel.snp.remakeConstraints { make in

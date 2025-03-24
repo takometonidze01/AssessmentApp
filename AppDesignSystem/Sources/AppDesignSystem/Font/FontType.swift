@@ -25,13 +25,13 @@ enum FontType: Equatable, Hashable {
     case .custom(let family, let size, let style, let weight, let italic):
       return FontDescription(font: family, size: size, style: style, weight: weight, italic: italic)
     case .h1:
-      return FontDescription(font: .poppins, size: 20, style: .title1, weight: .semibold)
+      return FontDescription(font: .poppins, size: 32, style: .title1, weight: .semibold)
     case .button:
       return FontDescription(font: .poppins, size: 12, style: .body, weight: .regular)
     case .body1:
-      return FontDescription(font: .poppins, size: 16, style: .body, weight: .regular)
+      return FontDescription(font: .poppins, size: 20, style: .body, weight: .regular)
     case .body2:
-      return FontDescription(font: .poppins, size: 14, style: .body, weight: .regular)
+      return FontDescription(font: .poppins, size: 14, style: .body, weight: .thin)
     }
   }
 

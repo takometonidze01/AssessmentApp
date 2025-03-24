@@ -15,19 +15,18 @@ class MainView: UIView {
   var viewModel: MainViewModelType
 
   private lazy var collectionView: CustomCollectionView = {
-    let layout = UICollectionViewCompositionalLayout { [weak self] index, _ -> NSCollectionLayoutSection? in
+    let layout = UICollectionViewCompositionalLayout { [weak self] _, _ -> NSCollectionLayoutSection? in
       guard let self else {
         return nil
       }
 
-      return self.titleSection()
+      return self.sectionLayout()
     }
 
     let config = UICollectionViewCompositionalLayoutConfiguration()
-    config.interSectionSpacing = CGFloat.spacing8
+    config.interSectionSpacing = CGFloat.spacing5.scaledWidth
     layout.configuration = config
     let view = CustomCollectionView(collectionViewLayout: layout)
-    view.backgroundColor = .green
     view.contentInset = .init(top: CGFloat.spacing6, left: 0, bottom: 0, right: 0)
 
     return view
@@ -56,8 +55,7 @@ class MainView: UIView {
   }
 
   private func setup() {
-    backgroundColor = .red
-
+    backgroundColor = UIColor[.containerBackground]
     addSubview(collectionView)
 
     layout()
@@ -70,10 +68,10 @@ class MainView: UIView {
     }
   }
 
-  private func titleSection() -> NSCollectionLayoutSection {
+  private func sectionLayout() -> NSCollectionLayoutSection {
     let itemSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(1.0),
-      heightDimension: .absolute(150)
+      heightDimension: .estimated(100)
     )
 
     let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -81,12 +79,12 @@ class MainView: UIView {
     let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: itemSize, subitems: [item])
 
     let section = NSCollectionLayoutSection(group: verticalGroup)
-    section.interGroupSpacing = 16.0
+    section.interGroupSpacing = CGFloat.spacing7.scaledWidth
     section.contentInsets = NSDirectionalEdgeInsets(
-      top: 0,
-      leading: 16.0,
-      bottom: 0,
-      trailing: 16.0
+      top: .zero,
+      leading: CGFloat.spacing7.scaledWidth,
+      bottom: .zero,
+      trailing: CGFloat.spacing7.scaledWidth
     )
 
     return section

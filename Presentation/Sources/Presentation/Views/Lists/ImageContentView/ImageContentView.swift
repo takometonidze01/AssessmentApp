@@ -72,6 +72,7 @@ class ImageContentView: UIView, UIContentView {
   private func layout() {
     wrapperView.snp.remakeConstraints { make in
       make.edges.equalToSuperview()
+      make.height.equalTo(180.0.scaledWidth)
     }
 
     imageView.snp.remakeConstraints { make in
