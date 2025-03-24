@@ -1,5 +1,5 @@
 //
-//  ImageContentView.swift
+//  DetailContentView.swift
 //  Presentation
 //
 //  Created by Tako Metonidze on 3/24/25.
@@ -9,7 +9,7 @@ import UIKit
 import AppDesignSystem
 import SnapKit
 
-class ImageContentView: UIView, UIContentView {
+class DetailContentView: UIView, UIContentView {
   var configuration: UIContentConfiguration {
     didSet {
       configure(configuration: configuration)
@@ -31,17 +31,16 @@ class ImageContentView: UIView, UIContentView {
 
   private lazy var titleLabel: UILabel = {
     let label = UILabel()
-    label.font = .body2
+    label.font = .body1
     label.textColor = UIColor[.text1]
     return label
   }()
 
-  init(withConfiguration conf: ImageContentConfiguration) {
+  init(withConfiguration conf: DetailContentConfiguration) {
     configuration = conf
     super.init(frame: .zero)
     setup()
     configure(configuration: conf)
-    addTapGesture()
   }
 
   @available(*, unavailable)
@@ -58,7 +57,7 @@ class ImageContentView: UIView, UIContentView {
   }
 
   private func configure(configuration: UIContentConfiguration) {
-    guard let config = configuration as? ImageContentConfiguration else {
+    guard let config = configuration as? DetailContentConfiguration else {
       return
     }
 
@@ -74,27 +73,16 @@ class ImageContentView: UIView, UIContentView {
   private func layout() {
     wrapperView.snp.remakeConstraints { make in
       make.edges.equalToSuperview()
-      make.height.equalTo(180.0.scaledWidth)
     }
 
     imageView.snp.remakeConstraints { make in
-      make.top.leading.equalToSuperview()
-      make.size.equalTo(160.0.scaledWidth)
+      make.top.leading.trailing.equalToSuperview()
+      make.height.equalTo(500.0.scaledWidth)
     }
 
     titleLabel.snp.remakeConstraints { make in
       make.top.equalTo(imageView.snp.bottom).offset(CGFloat.spacing8.scaledWidth)
-      make.leading.equalToSuperview()
+      make.leading.trailing.equalToSuperview()
     }
-  }
-
-  private func addTapGesture() {
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-    wrapperView.addGestureRecognizer(tapGesture)
-  }
-
-  @objc private func handleTap() {
-    guard let config = configuration as? ImageContentConfiguration else { return }
-    config.didTapOnView?()
   }
 }

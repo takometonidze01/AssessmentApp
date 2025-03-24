@@ -28,7 +28,7 @@ extension MainFlowContainer {
         imageData: $0,
         serviceLocator: serviceLocator
       )
-      return DetailsScene()
+      return DetailsScene(viewModel: viewModel)
     }
     .unique
   }

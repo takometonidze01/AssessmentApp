@@ -16,10 +16,10 @@ final class MainFlowContainer: SharedContainer {
 
 // MARK: Coordinator
 extension MainFlowContainer {
-  @MainActor var mainCoordinator: ParameterFactory<NavigationCoordinator<MainRoute>.RootViewController, MainCoordinator> {
+  @MainActor var mainCoordinator: Factory<MainCoordinator> {
     self { @MainActor in
       let serviceLocator = MainCoordinatorServiceLocator()
-      return MainCoordinator(rootViewController: $0, serviceLocator: serviceLocator)
+      return MainCoordinator(serviceLocator: serviceLocator)
     }
     .shared
   }
@@ -28,7 +28,7 @@ extension MainFlowContainer {
     UnownedRouter<MainRoute>
   > {
     self { @MainActor in
-      let coordinator = MainFlowContainer.shared.mainCoordinator(.init())
+      let coordinator = MainFlowContainer.shared.mainCoordinator()
       return coordinator.unownedRouter
     }
     .shared

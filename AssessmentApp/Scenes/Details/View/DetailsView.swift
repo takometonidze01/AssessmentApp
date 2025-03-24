@@ -71,7 +71,7 @@ class DetailsView: UIView {
   private func sectionLayout() -> NSCollectionLayoutSection {
     let itemSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(1.0),
-      heightDimension: .estimated(100)
+      heightDimension: .fractionalHeight(1.0)
     )
 
     let item = NSCollectionLayoutItem(layoutSize: itemSize)

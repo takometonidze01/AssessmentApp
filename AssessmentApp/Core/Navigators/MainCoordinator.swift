@@ -19,12 +19,11 @@ class MainCoordinator: NavigationCoordinator<MainRoute>, @unchecked Sendable {
   private var serviceLocator: MainCoordinatorServiceLocatorProtocol
 
   public init(
-    rootViewController: RootViewController,
-    initialRoute: RouteType? = nil,
     serviceLocator: MainCoordinatorServiceLocatorProtocol
   ) {
     self.serviceLocator = serviceLocator
-    super.init(rootViewController: rootViewController, initialRoute: initialRoute)
+    let root = UINavigationController()
+    super.init(rootViewController: root, initialRoute: .main)
   }
 
   deinit {
@@ -46,8 +45,7 @@ class MainCoordinator: NavigationCoordinator<MainRoute>, @unchecked Sendable {
       return .set([controller])
     case .details:
       let controller = makeViewController(for: route)
-//      controller.sheetPresentationController?.detents = UISheetPresentationController.detents(.large())
-      return .present(controller)
+      return .push(controller)
     }
   }
 

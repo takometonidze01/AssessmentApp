@@ -97,7 +97,15 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
           }
           return false
         }), case let .image(imageData) = item else { return }
-      let configuration = ImageContentConfiguration(image: imageData.src, title: imageData.title)
+      let configuration = ImageContentConfiguration(
+        image: imageData.src,
+        title: imageData.title,
+        didTapOnView: { [weak self] in
+          guard let self else { return }
+
+          self.serviceLocator.unownedMainCoordinator.trigger(.details(imageData: imageData))
+        }
+      )
       cell.contentConfiguration = configuration
     }
   }
@@ -125,7 +133,7 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
 
     dataSource?.apply(snapshot, animatingDifferences: false)
   }
-  
+
   @MainActor
   private func updateEmptyState(with type: EmptyStateType) {
     var snapshot = SnapshotType()

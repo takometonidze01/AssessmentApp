@@ -50,6 +50,11 @@ final class DetailsViewModel: DetailsViewModelInputs, DetailsViewModelOutputs {
     ]
 
     dataSource = CollectionViewDataSource(collectionView: collectionView, cellRegisrations: cellRegistrations)
+
+    Task { [weak self] in
+      guard let self else { return }
+      self.updateDataSource()
+    }
     return dataSource
   }
 
@@ -57,7 +62,11 @@ final class DetailsViewModel: DetailsViewModelInputs, DetailsViewModelOutputs {
     CollectionViewDataSource.CellRegistration { [weak self] cell, _, _ in
       guard let self else { return }
 
-      let configuration = ImageContentConfiguration(image: self.imageData.src, title: self.imageData.title)
+      let configuration = DetailContentConfiguration(
+        image: self.imageData.src,
+        title: self.imageData.title
+      )
+
       cell.contentConfiguration = configuration
     }
   }
