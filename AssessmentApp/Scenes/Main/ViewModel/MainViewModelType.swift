@@ -7,6 +7,7 @@
 
 import UIKit
 import RxCocoa
+import Presentation
 
 @MainActor
 extension MainView {
@@ -19,6 +20,7 @@ extension MainView {
 @MainActor
 protocol MainViewModelInputs {
   func viewDidLoad()
+  func setCollectionView(collectionView: CustomCollectionView)
 }
 
 /// Protocol for MainViewModelTypeViewModel getters

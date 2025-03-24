@@ -19,8 +19,8 @@ enum FontFamily: String {
     switch self {
     case .poppins:
       return [
-        "Poppins-SemiBold.ttf",
-        "Poppins-Regular.ttf"
+        "Poppins-Regular.ttf",
+        "Poppins-SemiBold.ttf"
       ]
     default:
       return []

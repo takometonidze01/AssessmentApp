@@ -13,10 +13,6 @@ protocol ColorProviding {
 }
 
 public enum DynamicColorType: String, CaseIterable, ColorProviding {
-  /// Branding
-  case primary  = "Colors/Brand/primary"
-  case secondary  = "Colors/Brand/secondary"
-
   /// System
   case success = "Colors/System/success"
   case error = "Colors/System/error"

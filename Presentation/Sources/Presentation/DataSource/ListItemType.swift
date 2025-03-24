@@ -8,5 +8,5 @@
 import Foundation
 
 public enum ListItemType: String, Hashable, CaseIterable, Sendable {
-  case defaultValue
+  case titleSection
 }
