@@ -14,7 +14,7 @@ protocol MainServiceLocatorProtocol: Sendable {
   @MainActor var unownedMainCoordinator: UnownedRouter<MainRoute> { get }
 
   var formRepository: FormRepositoring { get }
-  
+
   @MainActor var toast: CustomToast { get }
 }
 
@@ -26,7 +26,7 @@ final class MainServiceLocator: MainServiceLocatorProtocol {
   var formRepository: FormRepositoring {
     MainFlowContainer.shared.mainRepository()
   }
-  
+
   @MainActor var toast: CustomToast {
     MainFlowContainer.shared.toast()
   }

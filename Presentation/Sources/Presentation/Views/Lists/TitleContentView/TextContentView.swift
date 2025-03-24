@@ -52,8 +52,22 @@ class TextContentView: UIView, UIContentView {
       return
     }
 
-    titleLabel.text = config.title
-    titleLabel.font = config.font
+    // Apply font and bold if needed
+    titleLabel.font = config.isBold ? UIFont.boldSystemFont(ofSize: config.font.pointSize) : config.font
+
+    // Bullet prefix if required
+    var displayText = config.title
+    if config.hasBullet {
+      displayText = "• " + displayText
+    }
+
+    // Indentation
+    let indent = CGFloat(config.indentationLevel) * 12.0
+    titleLabel.text = displayText
+    titleLabel.snp.remakeConstraints { make in
+      make.leading.equalToSuperview().offset(indent)
+      make.centerY.equalToSuperview()
+    }
   }
 
   private func layout() {

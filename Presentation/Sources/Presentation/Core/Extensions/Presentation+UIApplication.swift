@@ -16,4 +16,3 @@ public extension UIApplication {
       .first
   }
 }
-

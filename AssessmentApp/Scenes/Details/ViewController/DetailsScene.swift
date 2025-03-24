@@ -26,9 +26,4 @@ class DetailsScene: UIViewController {
     super.loadView()
     view = DetailsView(viewModel: viewModel)
   }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-  }
 }

@@ -32,7 +32,7 @@ class ImageContentView: UIView, UIContentView {
   private lazy var titleLabel: UILabel = {
     let label = UILabel()
     label.font = .body2
-    label.textColor = UIColor[.text1]
+    label.textColor = UIColor[.text1].withAlphaComponent(0.4)
     return label
   }()
 

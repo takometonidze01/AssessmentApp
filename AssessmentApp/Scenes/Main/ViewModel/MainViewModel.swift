@@ -76,8 +76,14 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs {
 
   private func getTextCell(for type: ListItemType) -> CollectionViewDataSource.CellRegistration {
     CollectionViewDataSource.CellRegistration { cell, _, identifier in
-      let font: UIFont = type.associatedFont
-      let configuration = TextContentConfiguration(title: identifier.id, font: font)
+      let configuration = TextContentConfiguration(
+        title: identifier.id,
+        font: type.associatedFont,
+        isBold: type.isBold,
+        hasBullet: type.hasBullet,
+        indentationLevel: type.indentationLevel
+      )
+
       cell.contentConfiguration = configuration
     }
   }
@@ -246,6 +252,33 @@ private extension ListItemType {
       return .body2
     default:
       return .systemFont(ofSize: 17, weight: .regular)
+    }
+  }
+
+  var isBold: Bool {
+    switch self {
+    case .page, .sectionTitle:
+      return true
+    default:
+      return false
+    }
+  }
+
+  var hasBullet: Bool {
+    switch self {
+    case .sectionTitle, .subtitle:
+      return true
+    default:
+      return false
+    }
+  }
+
+  var indentationLevel: Int {
+    switch self {
+    case .subtitle:
+      return 1
+    default:
+      return 0
     }
   }
 }

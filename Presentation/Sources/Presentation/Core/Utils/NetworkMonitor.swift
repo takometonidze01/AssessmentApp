@@ -9,7 +9,7 @@ import Foundation
 import Network
 
 @MainActor
-final public class NetworkMonitor: Sendable {
+final public class NetworkMonitor {
   @MainActor static public let shared = NetworkMonitor()
 
   private let monitor = NWPathMonitor()

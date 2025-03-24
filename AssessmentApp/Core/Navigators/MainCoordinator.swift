@@ -56,8 +56,6 @@ class MainCoordinator: NavigationCoordinator<MainRoute>, @unchecked Sendable {
       return serviceLocator.mainScene()
     case .details(let imageQuestion):
       return serviceLocator.details(imageQuestion: imageQuestion)
-    default:
-      return UIViewController()
     }
   }
   //swiftlint:enable function_body_length
