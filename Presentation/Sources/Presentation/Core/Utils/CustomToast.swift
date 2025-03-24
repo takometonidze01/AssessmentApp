@@ -51,31 +51,29 @@ public struct CustomToastConfiguration {
 public class CustomToast {
   var config: CustomToastConfiguration
 
+  var isDarkMode = UITraitCollection.current.userInterfaceStyle == .dark
+
   public init(config: CustomToastConfiguration = .init()) {
     self.config = config
   }
 
   public func showCustomView(
-    with viewConfig: CustomToastConfiguration
+    with viewConfig: CustomToastViewConfiguration
   ) {
     let view = CustomToastView(with: viewConfig)
     let attributes = createAttributeByConfig()
 
-    Haptic(feedbackType: viewConfig.type.haptic).feedbackType.perform()
     SwiftEntryKit.display(entry: view, using: attributes)
   }
 
   public func showGenericError() {
-    let viewConfig =  CustomToastConfiguration(title: "error_occurred".localized(.common), type: .error)
+    let viewConfig =  CustomToastViewConfiguration(title: "Error occurred", type: .error)
     let view = CustomToastView(with: viewConfig)
     let attributes = createAttributeByConfig()
-    Haptic(feedbackType: viewConfig.type.haptic).feedbackType.perform()
     SwiftEntryKit.display(entry: view, using: attributes)
   }
 
   private func createAttributeByConfig() -> EKAttributes {
-    let themeType = UIUserInterfaceStyle(rawValue: UserDefaults.standard[.darkTheme])
-
     var attributes = EKAttributes.topFloat
     attributes.entranceAnimation = config.entranceAnimation
     attributes.exitAnimation = config.exitAnimation
@@ -84,8 +82,8 @@ public class CustomToast {
     attributes.popBehavior = config.popBehavior
     attributes.displayDuration = config.displayDuration
     attributes.screenBackground = config.screenBackground
-    attributes.statusBar = themeType == .dark ? .light : .dark
-    attributes.displayMode = themeType == .dark ? .dark : .light
+    attributes.statusBar = isDarkMode ? .light : .dark
+    attributes.displayMode = isDarkMode ? .dark : .light
 
     attributes.lifecycleEvents.willAppear = {
       SwiftEntryKit.window?.overrideUserInterfaceStyle = .light

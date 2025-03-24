@@ -12,6 +12,8 @@ public enum Image: String, CaseIterable, Codable, ImageRepresentable {
   static let assetsLibraryPath = "Images/"
 
   case transparentImagePlaceholder = "transparent-image-placeholder"
+  case redError = "red-error"
+  case greenSuccess = "green-success"
 
   public func asImage() -> UIImage? {
     return UIImage(image: self)

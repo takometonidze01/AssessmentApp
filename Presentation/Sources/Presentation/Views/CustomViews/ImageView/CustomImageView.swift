@@ -88,7 +88,7 @@ public final class CustomImageView: UIImageView {
   }
 }
 
-final class TNETImagePlaceHolder: UIView, @preconcurrency Kingfisher.Placeholder {
+final class TNETImagePlaceHolder: UIView, Kingfisher.Placeholder {
   private var placeholderImage: UIImage
 
   private lazy var placeHolderImageView: UIImageView = {
