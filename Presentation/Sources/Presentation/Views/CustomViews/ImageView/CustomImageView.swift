@@ -68,7 +68,7 @@ public final class CustomImageView: UIImageView {
       .transition(animation.convert(withDuration: 0.25))
     ] + additionalOptions
 
-    let placeHolder = TNETImagePlaceHolder(withImage: placeholderImage)
+    let placeHolder = CustomImagePlaceHolder(withImage: placeholderImage)
     kf.setImage(with: url, placeholder: placeHolder, options: options, progressBlock: nil) { [weak self] result in
       guard let self, let callback = self.onImageLoad else {
         return
@@ -88,7 +88,7 @@ public final class CustomImageView: UIImageView {
   }
 }
 
-final class TNETImagePlaceHolder: UIView, Kingfisher.Placeholder {
+final class CustomImagePlaceHolder: UIView, Kingfisher.Placeholder {
   private var placeholderImage: UIImage
 
   private lazy var placeHolderImageView: UIImageView = {

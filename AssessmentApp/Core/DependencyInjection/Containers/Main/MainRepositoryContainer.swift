@@ -11,7 +11,7 @@ import Networking
 import UIKit
 
 extension MainFlowContainer {
-  var tnetRestApi: Factory<CustomRestApi> {
+  var customRestApi: Factory<CustomRestApi> {
     self {
       return CustomRestApi(
         baseURL: URL(string: "https://run.mocky.io") ?? URL(fileReferenceLiteralResourceName: "")
@@ -22,7 +22,7 @@ extension MainFlowContainer {
 
   var mainRepository: Factory<FormRepositoring> {
     self {
-      FormLocalRepository(service: MainFlowContainer.shared.tnetRestApi())
+      FormLocalRepository(service: MainFlowContainer.shared.customRestApi())
     }
     .shared
   }

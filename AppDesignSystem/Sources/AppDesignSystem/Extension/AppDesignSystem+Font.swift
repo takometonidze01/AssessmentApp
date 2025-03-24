@@ -9,24 +9,24 @@ import UIKit.UIFont
 import SwiftUI
 
 public extension UIFont {
-  /// TBCX font builder
+  /// Poppins font builder
   static func poppins(size: CGFloat, weight: UIFont.Weight = .regular, relativeTo textStyle: UIFont.TextStyle, isItalic: Bool = false) -> UIFont {
     FontProvider.shared.custom(.poppins, size: size, style: textStyle, weight: weight, italic: isItalic)
   }
 
   // MARK: Headings
-  /// TBCX - 20pt - bold
+  /// Poppins - 32pt - bold
   static let h1: UIFont = FontProvider.shared[.h1]
 
   // MARK: Buttons
-  /// TBCX - 12pt - regular
+  /// Poppins - 12pt - regular
   static let button: UIFont = FontProvider.shared[.button]
 
   // MARK: Body
-  /// TBCX - 16pt - regular
+  /// Poppins - 20pt - regular
   static let body1: UIFont = FontProvider.shared[.body1]
 
-  /// TBCX - 14pt - regular
+  /// Poppins - 14pt - regular
   static let body2: UIFont = FontProvider.shared[.body2]
 }
 
